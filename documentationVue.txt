@@ -1,0 +1,6 @@
+install vue : npm install -g @vue/cli
+
+adding : vue create cars_vue
+ cd then install 
+npm install axios
+npm install bulma 
