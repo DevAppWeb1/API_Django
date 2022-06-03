@@ -1,0 +1,3 @@
+
+active l envirenment virtual
+enviromnent_3_8_\Scripts\activate.bat
