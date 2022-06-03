@@ -1,4 +1,11 @@
-
-active l envirenment virtual
+creat l'enverenement vertual:
+python3 -m venv enviromnent_3_8_2
+active l envirenment virtual:
 enviromnent_3_8_2\Scripts\activate.bat
-
+instalation::
+pip install django
+pip install django-rest-framework
+pip install django-cors-headers
+pip install pillow
+pip install djoser
+pip install stripe
