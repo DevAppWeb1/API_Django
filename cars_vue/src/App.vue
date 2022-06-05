@@ -1,52 +1,67 @@
 <template>
   <div id="wrapper">
-      <nav class="navbar is-dark">
-        <div class="navbar-brand">
-          <router-link to="/" class="navbar-item"><strong>YURCAR</strong></router-link>
-          <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-menu" id="navbar-menu"  v-bind:class="{'is-active': showMobileMenu }">
-          <div class="navbar-end">
-            <router-link to="/luxurious" class="navbar-item">Luxurious</router-link>
-            <router-link to="/economic" class="navbar-item">Economic</router-link>
-            
-            <div class="navbar-item">
-              <div class="buttons">
+    <nav class="navbar is-dark">
+      <div class="navbar-brand">
+        <router-link to="/" class="navbar-item"><strong>YUR CAR</strong></router-link>
+
+        <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="navbar-menu"  v-bind:class="{'is-active': showMobileMenu }">
+        <div class="navbar-end">
+          <router-link to="/economic" class="navbar-item">economic</router-link>
+          <router-link to="/luxurious" class="navbar-item">luxurious</router-link>
+
+          <div class="navbar-item">
+            <div class="buttons">
+              <template v-if="$store.state.isAuthenticated">
+                <router-link to="/my-account" class="button is-light">My account</router-link>
+              </template>
+
+              <template v-else>
                 <router-link to="/log-in" class="button is-light">Log in</router-link>
-                <router-link to="/cart" class="button is-success">
-                  <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-                  <span>Cart ({{ cartTotalLength }})</span>
-                </router-link> 
-              </div>
+              </template>
+
+              <router-link to="/cart" class="button is-success">
+                <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                <span>Cart ({{ cartTotalLength }})</span>
+              </router-link>
             </div>
           </div>
         </div>
-      </nav>
-      <section class="section">
-        <router-view/>
-      </section>
-      <footer class="footer">
-        <p class="has-text-centered">Copyright (c) 2022</p>
-      </footer>
+      </div>
+    </nav>
 
-    <router-view/>
+    <div class="is-loading-bar has-text-centered" v-bind:class="{'is-loading': $store.state.isLoading }">
+      <div class="lds-dual-ring"></div>
+    </div>
+
+    <section class="section">
+      <router-view/>
+    </section>
+
+    <footer class="footer">
+      <p class="has-text-centered">Copyright (c) 2021</p>
+    </footer>
   </div>
 </template>
-<script>
-export default {
-  data(){
-    return {
-      showMobileMenu:false,
-    }
 
+<script>
+
+export default {
+  data() {
+    return {
+      showMobileMenu: false,
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import '../node_modules/bulma';
+
 </style>
