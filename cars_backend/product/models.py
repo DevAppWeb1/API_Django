@@ -1,12 +1,13 @@
 from django.db import models
 from io import BytesIO
 from PIL import Image
+from django.core.files import File
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
-
-    class Meta:
+ 
+    class Meta:    
         ordering = ('name',)
     
     def __str__(self):
@@ -61,4 +62,4 @@ class Product(models.Model):
 
         thumbnail = File(thumb_io, name=image.name)
 
-        return thumbnail
+        return thumbnail 
